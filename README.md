@@ -22,3 +22,20 @@ Pasos:
 - La función `const generarNumeroAleatorio = (): number => Math.floor(Math.random() * 10) + 1;` nos devuelve un número aleatorio entre 1 y 10.
 - Después creamos la función `const generarNumeroCarta` donde pasamos el _numeroAleatorio_ para asignarle los valores de las cartas que van del 1 al 12 excluyendo el 8 y el 9. Para esto lo que hacemos es sumar +2 siempre que `numeroAleatorio > 7`.
 - La función `dameCarta` es la que reoge la orden de asignar a cada numero aleatorio (`const numeroGenerado`) su número de carta correspondiente (`numeroCarta`). Este número se muestra al hacer click en el botón que hemos creado al principio.
+
+## 3. Mostrar carta
+
+- En el HTML añadimos un _img_ que contiene la imagen boca abajo de la carta. Esta imagen cambia cada vez que pedimos una nueva carta adaptandose a cada uno de los casos declarados en el _switch_.
+- Creamos la funcion `const mostrarCarta = (carta: number) : void;`, donde en primer lugar definimos la variable `const elementoImagen` que almacena el src de la imagen creada anteriormente con el `ìd=carta-img`. Siempre que se lea ese id se desarrollarán los casos recogidos en el _switch_.
+- Por último, volvemos a la función `dameCarta`para poner en marcha `mostrarCarta` y que el número aleatorio generado se segine a un número de carta que se corresponderá con un caso y a su vez con una imagen de carta.
+
+```const dameCarta = () => {
+  const numeroGenerado = generarNumeroAleatorio();
+  const numeroCarta = generarNumeroCarta(numeroGenerado);
+  mostrarCarta(numeroCarta);
+};
+```
+
+## 4. Sumar puntuación
+
+-
