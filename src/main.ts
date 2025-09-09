@@ -25,12 +25,22 @@ const dameCarta = () => {
   const numeroGenerado = generarNumeroAleatorio();
   const numeroCarta = generarNumeroCarta(numeroGenerado);
   mostrarCarta(numeroCarta);
+  asignarPuntuacion(numeroCarta);
 };
 
 const dameCartaBoton = document.getElementById("dame-carta-button");
 if (dameCartaBoton && dameCartaBoton instanceof HTMLButtonElement) {
   dameCartaBoton.addEventListener("click", dameCarta);
 }
+
+const asignarPuntuacion = (carta: number) => {
+  if (carta > 7) {
+    puntuacion = puntuacion + 0.5;
+  } else {
+    puntuacion = puntuacion + carta;
+  }
+  muestraPuntuacion();
+};
 
 const mostrarCarta = (carta: number): void => {
   const elementoImagen = document.getElementById(
@@ -40,7 +50,6 @@ const mostrarCarta = (carta: number): void => {
     console.error("mostrarCarta: No se ha encontrado el id carta-img");
     return;
   }
-
   switch (carta) {
     case 1:
       elementoImagen.src =

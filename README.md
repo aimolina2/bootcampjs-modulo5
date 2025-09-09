@@ -38,4 +38,8 @@ Pasos:
 
 ## 4. Sumar puntuación
 
--
+- Comprobamos que ya tenemos creado el `let puntuacion = 0`.
+- Creamos la funcion `asignarPuntuacion` donde indicamos que cuando la carta sea mayor de 7 se sume 0,5 y si no lo es se sume el valor de la carta.
+- Al comprobarlo cada vez que pulsamos el botón _Dame una carta_ se va sumando la puntuación indefinidamente.
+
+## 5. Game Over
