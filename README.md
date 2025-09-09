@@ -43,3 +43,19 @@ Pasos:
 - Al comprobarlo cada vez que pulsamos el botón _Dame una carta_ se va sumando la puntuación indefinidamente.
 
 ## 5. Game Over
+
+- Creamos la funcion `const gameOver' donde indicamos que si la puntuación es mayor que 7,5 aparece en el marcador el mensaje GAME OVER y el botón se desactiva:
+
+```const gameOver = () => {
+  if (puntuacion > 7.5) {
+    if (elementoPuntuacion) {
+      elementoPuntuacion.innerHTML = "GAME OVER";
+    }
+    if (dameCartaBoton && dameCartaBoton instanceof HTMLButtonElement) {
+      dameCartaBoton.disabled = true;
+    }
+  }
+};
+```
+
+## 6. Me planto

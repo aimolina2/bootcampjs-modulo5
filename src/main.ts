@@ -1,14 +1,15 @@
 let puntuacion: number = 0;
+const dameCartaBoton = document.getElementById("dame-carta-button");
+const elementoPuntuacion = document.getElementById("puntuacion");
+const elementoImagen = document.getElementById("carta-img") as HTMLImageElement;
 
 const muestraPuntuacion = () => {
-  const elementoPuntuacion = document.getElementById("puntuacion");
   if (elementoPuntuacion) {
     elementoPuntuacion.innerHTML = puntuacion.toString();
   } else {
     console.error("muestraPuntuacion: No se ha encontrado el id puntuacion");
   }
 };
-
 document.addEventListener("DOMContentLoaded", muestraPuntuacion);
 
 const generarNumeroAleatorio = (): number => Math.floor(Math.random() * 10) + 1;
@@ -21,31 +22,7 @@ const generarNumeroCarta = (numeroAleatorio: number): number => {
   }
 };
 
-const dameCarta = () => {
-  const numeroGenerado = generarNumeroAleatorio();
-  const numeroCarta = generarNumeroCarta(numeroGenerado);
-  mostrarCarta(numeroCarta);
-  asignarPuntuacion(numeroCarta);
-};
-
-const dameCartaBoton = document.getElementById("dame-carta-button");
-if (dameCartaBoton && dameCartaBoton instanceof HTMLButtonElement) {
-  dameCartaBoton.addEventListener("click", dameCarta);
-}
-
-const asignarPuntuacion = (carta: number) => {
-  if (carta > 7) {
-    puntuacion = puntuacion + 0.5;
-  } else {
-    puntuacion = puntuacion + carta;
-  }
-  muestraPuntuacion();
-};
-
 const mostrarCarta = (carta: number): void => {
-  const elementoImagen = document.getElementById(
-    "carta-img"
-  ) as HTMLImageElement;
   if (!elementoImagen) {
     console.error("mostrarCarta: No se ha encontrado el id carta-img");
     return;
@@ -107,3 +84,35 @@ const mostrarCarta = (carta: number): void => {
       break;
   }
 };
+
+const asignarPuntuacion = (carta: number) => {
+  if (carta > 7) {
+    puntuacion = puntuacion + 0.5;
+  } else {
+    puntuacion = puntuacion + carta;
+  }
+  muestraPuntuacion();
+};
+
+const gameOver = () => {
+  if (puntuacion > 7.5) {
+    if (elementoPuntuacion) {
+      elementoPuntuacion.innerHTML = "GAME OVER";
+    }
+    if (dameCartaBoton && dameCartaBoton instanceof HTMLButtonElement) {
+      dameCartaBoton.disabled = true;
+    }
+  }
+};
+
+const dameCarta = () => {
+  const numeroGenerado = generarNumeroAleatorio();
+  const numeroCarta = generarNumeroCarta(numeroGenerado);
+  mostrarCarta(numeroCarta);
+  asignarPuntuacion(numeroCarta);
+  gameOver();
+};
+
+if (dameCartaBoton && dameCartaBoton instanceof HTMLButtonElement) {
+  dameCartaBoton.addEventListener("click", dameCarta);
+}
