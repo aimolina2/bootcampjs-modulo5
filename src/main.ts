@@ -1,7 +1,10 @@
 let puntuacion: number = 0;
+let mensaje: string = "";
 const dameCartaBoton = document.getElementById("dame-carta-button");
 const elementoPuntuacion = document.getElementById("puntuacion");
 const elementoImagen = document.getElementById("carta-img") as HTMLImageElement;
+const elementoMensaje = document.getElementById("mensaje");
+const mePlantoBoton = document.getElementById("me-planto-button");
 
 const muestraPuntuacion = () => {
   if (elementoPuntuacion) {
@@ -105,6 +108,30 @@ const gameOver = () => {
   }
 };
 
+const mensajePuntuacion = () => {
+  if (elementoMensaje) {
+    if (puntuacion <= 4) {
+      elementoMensaje.innerHTML = "Has sido muy conservador";
+    }
+    if (puntuacion === 5) {
+      elementoMensaje.innerHTML = "Te ha entrado el canguelo eh?";
+    }
+    if (puntuacion === 6 || puntuacion === 7) {
+      elementoMensaje.innerHTML = "Casi casi...";
+    }
+    if (puntuacion === 7.5) {
+      elementoMensaje.innerHTML = "¡Lo has clavado! ¡Enhorabuena";
+    }
+  }
+};
+
+const mePlanto = () => {
+  mensajePuntuacion();
+  if (dameCartaBoton && dameCartaBoton instanceof HTMLButtonElement) {
+    dameCartaBoton.disabled = true;
+  }
+};
+
 const dameCarta = () => {
   const numeroGenerado = generarNumeroAleatorio();
   const numeroCarta = generarNumeroCarta(numeroGenerado);
@@ -115,4 +142,7 @@ const dameCarta = () => {
 
 if (dameCartaBoton && dameCartaBoton instanceof HTMLButtonElement) {
   dameCartaBoton.addEventListener("click", dameCarta);
+}
+if (mePlantoBoton && mePlantoBoton instanceof HTMLButtonElement) {
+  mePlantoBoton.addEventListener("click", mePlanto);
 }

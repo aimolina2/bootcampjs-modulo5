@@ -59,3 +59,12 @@ Pasos:
 ```
 
 ## 6. Me planto
+
+- En el HTML añadimos un botón de _Me planto_ y un div \*id="me-planto-button" para mostrar el mensaje que corresponde cuando se pulsa el botón.
+- Creamos la función `const mensajePuntuacion` para asignar un mensaje según la puntuación y después una que desactive el botón _Dame una carta_
+- Por último, ponemos en marcha las funciones al pulsar el botón _Me planto_
+
+```if (mePlantoBoton && mePlantoBoton instanceof HTMLButtonElement) {
+  mePlantoBoton.addEventListener("click", mePlanto);
+}
+```
