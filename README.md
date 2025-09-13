@@ -68,3 +68,24 @@ Pasos:
   mePlantoBoton.addEventListener("click", mePlanto);
 }
 ```
+
+## 7. Nueva partida
+
+- Creamos el botón _Nueva partida_ en el HTLM y le asignamos el estado **disabled**.
+- Para que el botón se active cuando se produce _GAME OVER_ o cuando el usuario pulsa _Me planto_, definimos la función `activarNuevaPartida`
+
+```
+const activarNuevaPartida = () => {
+  if (nuevaPartidaBoton) {
+    nuevaPartidaBoton.disabled = false;
+  }
+};
+```
+
+- Hacemos que esta función se ejecute en la `const gameOver` y en `const mePlanto`.
+- Damos funcionalidad al botón para que al pulsarlo se reinicie el juego.
+- Este botón activa la función `nuevaPartida`donde hemos indicado el estado al que deben volver cada una de las variables, su estado inicial. Así reseteamos la imagen, la puntuación y mensaje de puntuación, así como el estado de los botones, pasando los desactivados a activados y al contrario.
+
+## 8. Estilo CSS
+
+- Mediante la aplicación de estilos maquetamos el visual del juego.

@@ -5,6 +5,9 @@ const elementoPuntuacion = document.getElementById("puntuacion");
 const elementoImagen = document.getElementById("carta-img") as HTMLImageElement;
 const elementoMensaje = document.getElementById("mensaje");
 const mePlantoBoton = document.getElementById("me-planto-button");
+const nuevaPartidaBoton = document.getElementById(
+  "nueva-partida-button"
+) as HTMLButtonElement;
 
 const muestraPuntuacion = () => {
   if (elementoPuntuacion) {
@@ -105,6 +108,7 @@ const gameOver = () => {
     if (dameCartaBoton && dameCartaBoton instanceof HTMLButtonElement) {
       dameCartaBoton.disabled = true;
     }
+    activarNuevaPartida();
   }
 };
 
@@ -120,7 +124,7 @@ const mensajePuntuacion = () => {
       elementoMensaje.innerHTML = "Casi casi...";
     }
     if (puntuacion === 7.5) {
-      elementoMensaje.innerHTML = "¡Lo has clavado! ¡Enhorabuena";
+      elementoMensaje.innerHTML = "¡Lo has clavado! ¡Enhorabuena!";
     }
   }
 };
@@ -129,6 +133,13 @@ const mePlanto = () => {
   mensajePuntuacion();
   if (dameCartaBoton && dameCartaBoton instanceof HTMLButtonElement) {
     dameCartaBoton.disabled = true;
+  }
+  activarNuevaPartida();
+};
+
+const activarNuevaPartida = () => {
+  if (nuevaPartidaBoton) {
+    nuevaPartidaBoton.disabled = false;
   }
 };
 
@@ -140,9 +151,37 @@ const dameCarta = () => {
   gameOver();
 };
 
+const reiniciarPartida = () => {
+  mensaje = "";
+  puntuacion = 0;
+  if (elementoPuntuacion) {
+    elementoPuntuacion.innerHTML = "0";
+  }
+  if (elementoMensaje) {
+    elementoMensaje.innerHTML = "";
+  }
+  if (elementoImagen) {
+    elementoImagen.src =
+      "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg";
+  }
+  if (dameCartaBoton && dameCartaBoton instanceof HTMLButtonElement) {
+    dameCartaBoton.disabled = false;
+  }
+  if (mePlantoBoton && mePlantoBoton instanceof HTMLButtonElement) {
+    mePlantoBoton.disabled = false;
+  }
+  if (nuevaPartidaBoton) {
+    nuevaPartidaBoton.disabled = true;
+  }
+};
+
 if (dameCartaBoton && dameCartaBoton instanceof HTMLButtonElement) {
   dameCartaBoton.addEventListener("click", dameCarta);
 }
 if (mePlantoBoton && mePlantoBoton instanceof HTMLButtonElement) {
   mePlantoBoton.addEventListener("click", mePlanto);
+}
+
+if (nuevaPartidaBoton && nuevaPartidaBoton instanceof HTMLButtonElement) {
+  nuevaPartidaBoton.addEventListener("click", reiniciarPartida);
 }
