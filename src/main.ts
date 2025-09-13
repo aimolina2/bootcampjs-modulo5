@@ -6,6 +6,7 @@ const elementoImagen = document.getElementById("carta-img") as HTMLImageElement;
 const elementoMensaje = document.getElementById("mensaje");
 const mePlantoBoton = document.getElementById("me-planto-button");
 const nuevaPartidaBoton = document.getElementById("nueva-partida-button");
+const futuroBoton = document.getElementById("futuro-button");
 
 const muestraPuntuacion = () => {
   if (elementoPuntuacion) {
@@ -142,11 +143,18 @@ const mePlanto = () => {
   if (mePlantoBoton && mePlantoBoton instanceof HTMLButtonElement) {
     mePlantoBoton.disabled = true;
   }
+  activarFuturoBoton();
 };
 
 const activarNuevaPartida = () => {
   if (nuevaPartidaBoton && nuevaPartidaBoton instanceof HTMLButtonElement) {
     nuevaPartidaBoton.disabled = false;
+  }
+};
+
+const activarFuturoBoton = () => {
+  if (futuroBoton && futuroBoton instanceof HTMLButtonElement) {
+    futuroBoton.style.display = "inline-block";
   }
 };
 
@@ -156,6 +164,20 @@ const dameCarta = () => {
   mostrarCarta(numeroCarta);
   asignarPuntuacion(numeroCarta);
   gameOver();
+};
+
+const mostrarFuturo = () => {
+  if (elementoImagen && elementoImagen instanceof HTMLImageElement) {
+    const numeroGenerado = generarNumeroAleatorio();
+    const numeroCarta = generarNumeroCarta(numeroGenerado);
+    mostrarCarta(numeroCarta);
+    if (elementoMensaje) {
+      elementoMensaje.innerHTML = "Esta hubiese sido tu carta";
+    }
+  }
+  if (futuroBoton && futuroBoton instanceof HTMLButtonElement) {
+    futuroBoton.disabled = true;
+  }
 };
 
 const reiniciarPartida = () => {
@@ -180,6 +202,10 @@ const reiniciarPartida = () => {
   if (nuevaPartidaBoton && nuevaPartidaBoton instanceof HTMLButtonElement) {
     nuevaPartidaBoton.disabled = true;
   }
+  if (futuroBoton && futuroBoton instanceof HTMLButtonElement) {
+    futuroBoton.style.display = "none";
+    futuroBoton.disabled = false;
+  }
 };
 
 if (dameCartaBoton && dameCartaBoton instanceof HTMLButtonElement) {
@@ -191,4 +217,8 @@ if (mePlantoBoton && mePlantoBoton instanceof HTMLButtonElement) {
 
 if (nuevaPartidaBoton && nuevaPartidaBoton instanceof HTMLButtonElement) {
   nuevaPartidaBoton.addEventListener("click", reiniciarPartida);
+}
+
+if (futuroBoton && futuroBoton instanceof HTMLButtonElement) {
+  futuroBoton.addEventListener("click", mostrarFuturo);
 }

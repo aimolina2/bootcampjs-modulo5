@@ -95,3 +95,27 @@ const activarNuevaPartida = () => {
 - Revisamos algunas de las funciones y hacemos los cambios necesarios para que el juego funcione correctamente. Por ejemplo, cuando pulsamos el botón Me planto, además del mensaje debemos deshabilitar el botón para que la unica opción de continuar sea mediante el botón _Nueva partida_.
 
 - Además del GAME OVER que aparece en el apartado de puntuación, enviamos un nuevo mensaje indicando al usuario que ha sobrepasado la suma de 7,5.
+
+## 10. EXTRA: mostrar futuro
+
+- Creamos un nuevo botón que deshabilitamos en el CSS con `display: none` y que activaremos cuando ponemos en marcha la función `mePlanto`.
+
+- El botón desata la funcion `mostrarFuturo`al hacer click.
+
+- Indicamos los pasos a seguir al activar el botón mediante la siguiente función:
+
+```
+const mostrarFuturo = () => {
+  if (elementoImagen && elementoImagen instanceof HTMLImageElement) {
+    const numeroGenerado = generarNumeroAleatorio();
+    const numeroCarta = generarNumeroCarta(numeroGenerado);
+    mostrarCarta(numeroCarta);
+    if (elementoMensaje) {
+      elementoMensaje.innerHTML = "Esta hubiese sido tu carta";
+    }
+  }
+  if (futuroBoton && futuroBoton instanceof HTMLButtonElement) {
+    futuroBoton.disabled = true;
+  }
+};
+```
