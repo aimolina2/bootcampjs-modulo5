@@ -89,3 +89,9 @@ const activarNuevaPartida = () => {
 ## 8. Estilo CSS
 
 - Mediante la aplicación de estilos maquetamos el visual del juego.
+
+## 9. Ajustes Typescript
+
+- Revisamos algunas de las funciones y hacemos los cambios necesarios para que el juego funcione correctamente. Por ejemplo, cuando pulsamos el botón Me planto, además del mensaje debemos deshabilitar el botón para que la unica opción de continuar sea mediante el botón _Nueva partida_.
+
+- Además del GAME OVER que aparece en el apartado de puntuación, enviamos un nuevo mensaje indicando al usuario que ha sobrepasado la suma de 7,5.

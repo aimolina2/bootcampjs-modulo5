@@ -9,17 +9,34 @@
   </head>
   <body>
     <div id="app">
-      <img
+      <h1>Juego 7 1/2</h1>
+      <p>
+        El objetivo del juego es acercarse a una puntuación de 7 y medio sin
+        pasarte. ¡Te toca pedir carta!
+      </p>
+
+      <section class="game-container">
+        <div class="game-board">
+            <img
         id="carta-img"
         src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg"
         alt="carta"
       />
-      <div id="puntuacion"></div>
-      <div id="mensaje"></div>
+      <div class="scoreboard">
+<div id="puntuacion" class="scoreboard-item">Puntos: </div>
+      <div id="mensaje" class="scoreboard-item"></div>
+      </div>
+      
+        </div>
+    <div class="button-container">
+
+   
       <button id="dame-carta-button">Dame una carta</button>
       <button id="me-planto-button">Me planto</button>
       <button id="nueva-partida-button" disabled>Nueva partida</button>
+       </div>
     </div>
+    </section>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

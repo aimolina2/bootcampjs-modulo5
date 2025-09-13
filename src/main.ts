@@ -5,9 +5,7 @@ const elementoPuntuacion = document.getElementById("puntuacion");
 const elementoImagen = document.getElementById("carta-img") as HTMLImageElement;
 const elementoMensaje = document.getElementById("mensaje");
 const mePlantoBoton = document.getElementById("me-planto-button");
-const nuevaPartidaBoton = document.getElementById(
-  "nueva-partida-button"
-) as HTMLButtonElement;
+const nuevaPartidaBoton = document.getElementById("nueva-partida-button");
 
 const muestraPuntuacion = () => {
   if (elementoPuntuacion) {
@@ -105,6 +103,9 @@ const gameOver = () => {
     if (elementoPuntuacion) {
       elementoPuntuacion.innerHTML = "GAME OVER";
     }
+    if (elementoMensaje && elementoMensaje instanceof HTMLElement) {
+      elementoMensaje.innerHTML = "☠️☠️☠️ Te has pasado ☠️☠️☠️";
+    }
     if (dameCartaBoton && dameCartaBoton instanceof HTMLButtonElement) {
       dameCartaBoton.disabled = true;
     }
@@ -118,13 +119,16 @@ const mensajePuntuacion = () => {
       elementoMensaje.innerHTML = "Has sido muy conservador";
     }
     if (puntuacion === 5) {
-      elementoMensaje.innerHTML = "Te ha entrado el canguelo eh?";
+      elementoMensaje.innerHTML = "Te ha entrado el canguelo, eh? 😏";
     }
     if (puntuacion === 6 || puntuacion === 7) {
       elementoMensaje.innerHTML = "Casi casi...";
     }
     if (puntuacion === 7.5) {
-      elementoMensaje.innerHTML = "¡Lo has clavado! ¡Enhorabuena!";
+      elementoMensaje.innerHTML = "¡Lo has clavado! ¡Enhorabuena! 🎉";
+    }
+    if (puntuacion > 7.5) {
+      elementoMensaje.innerHTML = "☠️☠️☠️ Te has pasado ☠️☠️☠️";
     }
   }
 };
@@ -135,10 +139,13 @@ const mePlanto = () => {
     dameCartaBoton.disabled = true;
   }
   activarNuevaPartida();
+  if (mePlantoBoton && mePlantoBoton instanceof HTMLButtonElement) {
+    mePlantoBoton.disabled = true;
+  }
 };
 
 const activarNuevaPartida = () => {
-  if (nuevaPartidaBoton) {
+  if (nuevaPartidaBoton && nuevaPartidaBoton instanceof HTMLButtonElement) {
     nuevaPartidaBoton.disabled = false;
   }
 };
@@ -170,7 +177,7 @@ const reiniciarPartida = () => {
   if (mePlantoBoton && mePlantoBoton instanceof HTMLButtonElement) {
     mePlantoBoton.disabled = false;
   }
-  if (nuevaPartidaBoton) {
+  if (nuevaPartidaBoton && nuevaPartidaBoton instanceof HTMLButtonElement) {
     nuevaPartidaBoton.disabled = true;
   }
 };
