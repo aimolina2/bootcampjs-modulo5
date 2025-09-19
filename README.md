@@ -119,3 +119,7 @@ const mostrarFuturo = () => {
   }
 };
 ```
+
+## 11. Refactorización
+
+Para mejorar la legibilidad y mantenimiento del código hemos refactorizado el archivo main.ts dividiendo las funciones más complejas hasta lograr que cada una de ellas realice una única acción.
