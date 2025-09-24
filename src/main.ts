@@ -118,52 +118,34 @@ const obtenerMensajeCuandoMePlanto = () => {
 const mePlanto = () => {
   const mensajePartida = obtenerMensajeCuandoMePlanto();
   mostrarMensaje(mensajePartida);
-  desactivarDameCartaBoton();
-  activarNuevaPartida();
-  desactivarMePlantoBoton();
+  desactivarDameCartaBoton(true);
+  desactivarNuevaPartida(false);
+  desactivarMePlantoBoton(true);
   activarFuturoBoton();
 };
 
-const desactivarDameCartaBoton = () => {
+const desactivarDameCartaBoton = (estaDesactivado: boolean) => {
   if (dameCartaBoton && dameCartaBoton instanceof HTMLButtonElement) {
-    dameCartaBoton.disabled = true;
+    dameCartaBoton.disabled = estaDesactivado;
   }
 };
 
-const activarDameCartaBoton = () => {
-  if (dameCartaBoton && dameCartaBoton instanceof HTMLButtonElement) {
-    dameCartaBoton.disabled = false;
-  }
-};
-
-const activarNuevaPartida = () => {
+const desactivarNuevaPartida = (estaDesactivado: boolean) => {
   if (nuevaPartidaBoton && nuevaPartidaBoton instanceof HTMLButtonElement) {
-    nuevaPartidaBoton.disabled = false;
+    nuevaPartidaBoton.disabled = estaDesactivado;
   }
 };
 
-const desactivarNuevaPartida = () => {
-  if (nuevaPartidaBoton && nuevaPartidaBoton instanceof HTMLButtonElement) {
-    nuevaPartidaBoton.disabled = true;
-  }
-};
-
-const desactivarMePlantoBoton = () => {
+const desactivarMePlantoBoton = (estaDesactivado: boolean) => {
   if (mePlantoBoton && mePlantoBoton instanceof HTMLButtonElement) {
-    mePlantoBoton.disabled = true;
-  }
-};
-
-const activarMePlantoBoton = () => {
-  if (mePlantoBoton && mePlantoBoton instanceof HTMLButtonElement) {
-    mePlantoBoton.disabled = false;
+    mePlantoBoton.disabled = estaDesactivado;
   }
 };
 
 const activarModoNuevaPartida = () => {
-  desactivarDameCartaBoton();
-  desactivarMePlantoBoton();
-  activarNuevaPartida();
+  desactivarDameCartaBoton(true);
+  desactivarMePlantoBoton(true);
+  desactivarNuevaPartida(false);
 };
 
 const activarFuturoBoton = () => {
@@ -215,9 +197,9 @@ const reiniciarPartida = () => {
   mostrarCarta(
     "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg"
   );
-  activarDameCartaBoton();
-  activarMePlantoBoton();
-  desactivarNuevaPartida();
+  desactivarDameCartaBoton(false);
+  desactivarMePlantoBoton(false);
+  desactivarNuevaPartida(true);
   ocultarFuturoBoton();
 };
 
